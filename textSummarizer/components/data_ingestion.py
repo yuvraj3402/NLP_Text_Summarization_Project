@@ -48,6 +48,7 @@ class DataIngestion:
 
             ingested_dir=self.data_ingestion_config.ingested_data_dir
 
+            logging.info(f"extracting files to {ingested_dir}")
             with zipfile.ZipFile(zip_file) as f:
                 f.extractall(ingested_dir)
 
@@ -67,6 +68,8 @@ class DataIngestion:
            samsum_dataset_dir=os.path.join(ingested_dir,SAMSUM_DATASET)
 
            data_ingestion_artifact=DataIngestionArtifact(samsum_dataset_dir=samsum_dataset_dir)
+
+           logging.info(f"{'>>'*20} data ingestion complete {'<<'*20}")
 
            return data_ingestion_artifact
         

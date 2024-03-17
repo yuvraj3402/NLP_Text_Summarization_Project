@@ -33,3 +33,9 @@ INGESTED_DIR_KEY="ingested_dir"
 
 #dataset dir
 SAMSUM_DATASET="samsum_dataset"
+
+
+DATA_VALIDATION_CONFIG_KEY="data_validation_config"
+DATA_VALIDATION_ARTIFACT_DIR="data_validation"
+STATUS_FILE_KEY="status_file"
+ALL_REQUIRED_FILES_KEY="all_required_files"

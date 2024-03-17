@@ -10,3 +10,9 @@ DataIngestionConfig=namedtuple("DataIngestionConfig",
                                ["dataset_download_url",
                                 "zip_data_dir",
                                 "ingested_data_dir"])
+
+
+
+DataValidationConfig=namedtuple("DataValidationConfig",
+                               ["status_file_path",
+                                "required_files"])
