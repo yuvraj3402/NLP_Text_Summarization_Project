@@ -16,3 +16,8 @@ DataIngestionConfig=namedtuple("DataIngestionConfig",
 DataValidationConfig=namedtuple("DataValidationConfig",
                                ["status_file_path",
                                 "required_files"])
+
+
+DataTransformationConfig=namedtuple("DataTransformationConfig",
+                               ["Tokenizer",
+                                "transformed_data_dir"])

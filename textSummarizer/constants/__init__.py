@@ -24,6 +24,7 @@ ARTIFACT_DIR_KEY ="artifact_dir"
 
 
 
+#data ingestion constants
 DATA_INGESTION_CONFIG_KEY="data_ingestion_config"
 DATASET_DOWNLOAD_URL_KEY="dataset_download_url"
 DATA_INGESTION_ARTIFACT_DIR="data_ingestion"
@@ -35,7 +36,15 @@ INGESTED_DIR_KEY="ingested_dir"
 SAMSUM_DATASET="samsum_dataset"
 
 
+#data validation constants
 DATA_VALIDATION_CONFIG_KEY="data_validation_config"
 DATA_VALIDATION_ARTIFACT_DIR="data_validation"
 STATUS_FILE_KEY="status_file"
 ALL_REQUIRED_FILES_KEY="all_required_files"
+
+
+#data transformation constants
+DATA_TRANSFORMATION_CONFIG_KEY="data_transformation_config"
+DATA_TRANSFORMATION_ARTIFACT_DIR="data_transformation"
+TOKENIZER_NAME_KEY="tokenizer_name"
+TRANSFORMED_DIR_KEY="transformed_dir"

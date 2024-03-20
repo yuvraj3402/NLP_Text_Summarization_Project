@@ -1,1 +1,8 @@
 pandas
+transformers
+datasets
+tqdm
+nltk
+torch
+rouge_score 
+transformers[sentencepiece]

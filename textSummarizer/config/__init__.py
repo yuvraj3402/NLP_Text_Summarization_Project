@@ -1,7 +1,7 @@
 from textSummarizer.exception import ProjectException 
 from textSummarizer.constants import *
 from textSummarizer.utils import read_yaml_file
-from textSummarizer.entity.config_entity import TrainingPipelineConfig,DataIngestionConfig,DataValidationConfig
+from textSummarizer.entity.config_entity import TrainingPipelineConfig,DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 import os,sys
 
 
@@ -82,6 +82,30 @@ class configuration:
             raise ProjectException(e,sys) from e
 
         
+
+
+    def get_data_transformation_config(self)->DataTransformationConfig:
+        try:
+            data_transformation_info=self.config_info[DATA_TRANSFORMATION_CONFIG_KEY]
+
+            artifact_dir=self.pipeline_config.artifact_dir
+
+            data_transformation_dir=os.path.join(artifact_dir,
+                                                 DATA_TRANSFORMATION_ARTIFACT_DIR,
+                                                 self.time_stamp)
+            
+            transformed_data_dir=os.path.join(data_transformation_dir,
+                                              data_transformation_info[TRANSFORMED_DIR_KEY])
+            
+            Tokenizer=data_transformation_info[TOKENIZER_NAME_KEY]
+
+            data_transformation_config=DataTransformationConfig(Tokenizer=Tokenizer,
+                                                                transformed_data_dir=transformed_data_dir)
+            
+            return data_transformation_config
+        except Exception as e:
+            raise ProjectException(e,sys) from e
+
 
 
 
