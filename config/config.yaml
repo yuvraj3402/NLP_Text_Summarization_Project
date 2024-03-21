@@ -24,6 +24,7 @@ data_transformation_config:
 
   
 model_trainer_config:
+  model_name: google/pegasus-cnn_dailymail
   
 
 

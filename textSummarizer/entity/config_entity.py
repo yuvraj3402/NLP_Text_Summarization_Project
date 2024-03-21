@@ -21,3 +21,11 @@ DataValidationConfig=namedtuple("DataValidationConfig",
 DataTransformationConfig=namedtuple("DataTransformationConfig",
                                ["Tokenizer",
                                 "transformed_data_dir"])
+
+
+
+ModelTrainerConfig = namedtuple("ModelTrainerConfig", ["trained_model_dir",
+                                                       "model_config_file_path",
+                                                       "model_name",
+                                                       "Tokenizer_path",
+                                                       "saved_model_path"])

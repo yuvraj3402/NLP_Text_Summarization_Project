@@ -11,6 +11,7 @@ def get_current_time_stamp():
 ROOT_DIR=os.getcwd()
 CONFIG_DIR="config"
 CONFIG_FILE_NAME="config.yaml"
+MODEL_FILE_NAME="model.yaml"
 CONFIG_FILE_PATH=os.path.join(ROOT_DIR,CONFIG_DIR,CONFIG_FILE_NAME)
 CURRENT_TIME_STAMP=f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
@@ -48,3 +49,18 @@ DATA_TRANSFORMATION_CONFIG_KEY="data_transformation_config"
 DATA_TRANSFORMATION_ARTIFACT_DIR="data_transformation"
 TOKENIZER_NAME_KEY="tokenizer_name"
 TRANSFORMED_DIR_KEY="transformed_dir"
+
+
+
+DIALOGUE="dialogue"
+SUMMARY="summary"
+INPUT_IDS="input_ids"
+ATTENTION_MASK="attention_mask"
+LABELS="labels"
+
+#model trainer constants
+MODEL_TRAINER_CONFIG_KEY="model_trainer_config"
+TRAINED_MODEL_DIR="trained_model"
+MODEL_NAME_KEY="model_name"
+
+PARAMS="params"

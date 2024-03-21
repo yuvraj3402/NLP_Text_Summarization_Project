@@ -1,7 +1,9 @@
 from textSummarizer.exception import ProjectException 
 from textSummarizer.constants import *
 from textSummarizer.utils import read_yaml_file
-from textSummarizer.entity.config_entity import TrainingPipelineConfig,DataIngestionConfig,DataValidationConfig,DataTransformationConfig
+from textSummarizer.entity.config_entity import TrainingPipelineConfig,DataIngestionConfig,DataValidationConfig,DataTransformationConfig,\
+ModelTrainerConfig
+
 import os,sys
 
 
@@ -105,6 +107,42 @@ class configuration:
             return data_transformation_config
         except Exception as e:
             raise ProjectException(e,sys) from e
+
+
+
+
+    def get_model_trainer_config(self)->ModelTrainerConfig:
+        try:
+            artifact_dir=self.pipeline_config.artifact_dir
+
+            model_trainer_config_info=self.config_info[MODEL_TRAINER_CONFIG_KEY]
+
+
+            trained_model_dir=os.path.join(artifact_dir,
+                                           TRAINED_MODEL_DIR)
+            
+            saved_model_path=os.path.join(trained_model_dir,"pegasus-samsum-model")
+
+            Tokenizer_path=os.path.join(trained_model_dir,"tokenizer")
+
+            
+            model_name=model_trainer_config_info[MODEL_NAME_KEY]
+                        
+            model_config_file_path=os.path.join(ROOT_DIR,CONFIG_DIR,MODEL_FILE_NAME)
+
+            model_trainer_config=ModelTrainerConfig(trained_model_dir=trained_model_dir,
+                                                    model_config_file_path=model_config_file_path,
+                                                    model_name=model_name,
+                                                    Tokenizer_path=Tokenizer_path,
+                                                    saved_model_path=saved_model_path)
+            
+
+            return model_trainer_config
+            
+        except Exception as e:
+            raise ProjectException(e,sys) from e
+
+
 
 
 

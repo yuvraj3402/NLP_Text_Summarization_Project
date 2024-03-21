@@ -6,6 +6,7 @@ from transformers import AutoTokenizer
 import os,sys
 from textSummarizer.exception import ProjectException
 from textSummarizer.logger import logging
+from textSummarizer.constants import *
 
 
 class DataTransformation:
@@ -24,14 +25,14 @@ class DataTransformation:
 
     def map_words_to_features(self,batch_summary):
          try:
-              input_encoding=self.tokenizer(batch_summary["dialogue"],max_length = 1024, truncation = True)
+              input_encoding=self.tokenizer(batch_summary[DIALOGUE],max_length = 1024, truncation = True)
 
               with self.tokenizer.as_target_tokenizer():
-                   target_encoding=self.tokenizer(batch_summary["summary"],max_length = 128, truncation = True)
+                   target_encoding=self.tokenizer(batch_summary[SUMMARY],max_length = 128, truncation = True)
                    
-              return {'input_ids' : input_encoding['input_ids'],
-                'attention_mask': input_encoding['attention_mask'],
-                'labels': target_encoding['input_ids']
+              return {INPUT_IDS : input_encoding[INPUT_IDS],
+                ATTENTION_MASK: input_encoding[ATTENTION_MASK],
+                INPUT_IDS: target_encoding[INPUT_IDS]
             }
          except Exception as e:
               raise ProjectException(e,sys) from e
@@ -55,7 +56,8 @@ class DataTransformation:
 
             dataset_map.save_to_disk(transformed_data_path)
 
-            data_transformation_artifact=DataTransformationArtifact(transformed_samsum_dataset_dir=transformed_data_path)
+            data_transformation_artifact=DataTransformationArtifact(transformed_samsum_dataset_dir=transformed_data_path,
+                                                                    Tokenizer=self.tokenizer)
 
             return data_transformation_artifact
          

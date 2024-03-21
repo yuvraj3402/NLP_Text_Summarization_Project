@@ -6,3 +6,7 @@ nltk
 torch
 rouge_score 
 transformers[sentencepiece]
+accelerate
+fastapi==0.78.0
+uvicorn==0.18.3
+Jinja2==3.1.2

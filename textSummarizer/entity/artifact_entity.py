@@ -7,4 +7,9 @@ DataIngestionArtifact=namedtuple("DataIngestionArtifact",
 
 
 DataTransformationArtifact=namedtuple("DataTransformationArtifact",
-                               ["transformed_samsum_dataset_dir"])
+                               ["transformed_samsum_dataset_dir",
+                                "Tokenizer"])
+
+ModelTrainerArtifact=namedtuple("ModelTrainerArtifact",
+                               ["samsum_model",
+                                "Tokenizer"])
